@@ -22,4 +22,9 @@ const server = app.listen(PORT, () => {
 
 const io = socketIO(server);
 
-io.on('connection', (socket) => console.log(socket));
+io.on('connection', (socket) => {
+	socket.on('newMessage', (data) => {
+		console.log(data);
+		console.log('new message recived');
+	});
+});
